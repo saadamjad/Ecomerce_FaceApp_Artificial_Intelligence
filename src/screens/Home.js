@@ -27,7 +27,7 @@ export default class Login extends React.Component {
           height: 100,
           // justifyContent: 'center',
         }}>
-        <Text style={{fontSize: 25, textAlign: 'center'}}>Home</Text>
+        <Text style={{fontSize: 25, textAlign: 'center'}}>Home cosmatics</Text>
         <TouchableOpacity
           style={{
             backgroundColor: 'red',
