@@ -23,17 +23,8 @@ class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      chosenDate: new Date(),
-      selected2: undefined,
-      selected: true,
       email: '',
       password: '',
-      isloading: false,
-      incorrect: false,
-      secureTextEntry: true,
-      //  Radiobutton: true,
-
-      email_valid: true,
     };
   }
   Login() {
@@ -44,7 +35,7 @@ class Login extends Component {
         email: this.state.email,
         password: this.state.password,
       };
-      this.props.reduxActions.Login();
+      this.props.reduxActions.Login(userData, this.props.navigation);
       // this.props.navigation.navigate('Home');
     }
   }
@@ -190,7 +181,7 @@ class Login extends Component {
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity
-                onPress={() => this.props.navigation.navigate('SignUp')}
+                onPress={() => this.props.navigation.navigate('Signup')}
                 style={{flexDirection: 'row', alignSelf: 'center'}}>
                 <Text style={{color: '#555', fontSize: 13}}>
                   Don't have an account yet?
@@ -206,9 +197,9 @@ class Login extends Component {
     );
   }
 }
-// const mapStateToProps = state => ({
-//   reduxState: state.reducers,
-// });
+const mapStateToProps = state => ({
+  reduxState: state.reducers,
+});
 
 const mapDispatchToProps = dispatch => ({
   reduxActions: bindActionCreators(reduxActions, dispatch),

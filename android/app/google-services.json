@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "383849390745",
+    "firebase_url": "https://cosmaticsapplication.firebaseio.com",
+    "project_id": "cosmaticsapplication",
+    "storage_bucket": "cosmaticsapplication.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:383849390745:android:7f680693b6ff6d49050e08",
+        "android_client_info": {
+          "package_name": "com.cosmatic"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "383849390745-duftf7ab7ov61o0phgl39ll6tqlp5tub.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmX-t6Calna9IOuZbM3E2jTMnYBmq_LlU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "383849390745-duftf7ab7ov61o0phgl39ll6tqlp5tub.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
