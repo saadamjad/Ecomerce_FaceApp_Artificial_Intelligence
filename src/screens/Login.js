@@ -49,11 +49,17 @@ class Login extends Component {
           <View
             style={{
               width: '100%',
-              height: 180,
+              height: 100,
               borderWidth: 0,
               alignItems: 'center',
               justifyContent: 'center',
-            }}></View>
+            }}>
+            <Image
+              source={require('../../assets/images/E.png')}
+              style={{height: 100, width: 100}}
+              resizeMode="contain"
+            />
+          </View>
 
           {/* </View> */}
           <View
@@ -72,7 +78,7 @@ class Login extends Component {
                 textAlign: 'center',
                 marginBottom: 15,
               }}>
-              Forgot Password
+              Login
             </Text>
 
             <Item
@@ -94,6 +100,20 @@ class Login extends Component {
                 style={{fontSize: 14, marginLeft: 5}}
               />
               {/* {'<br>'} */}
+
+              {/* <Fontisto color={'#000000'} size={20} style={{marginRight:10}} active name='email' /> */}
+            </Item>
+            {/**/}
+            <Item
+              regular
+              style={{
+                alignSelf: 'center',
+                marginTop: 10,
+                marginLeft: 20,
+                marginVertical: 10,
+                marginHorizontal: 20,
+                borderRadius: 5,
+              }}>
               <Input
                 style={{paddingRight: 20}}
                 placeholderTextColor={'#ccccc'}
@@ -102,6 +122,8 @@ class Login extends Component {
                 placeholder="Password"
                 style={{fontSize: 14, marginLeft: 5}}
               />
+              {/* {'<br>'} */}
+
               {/* <Fontisto color={'#000000'} size={20} style={{marginRight:10}} active name='email' /> */}
             </Item>
 
@@ -115,7 +137,8 @@ class Login extends Component {
                 height: 55,
                 alignSelf: 'center',
               }}
-              onPress={() => this.Login()}>
+              // onPress={() => this.Login()}
+              onPress={() => this.props.navigation.navigate('Signup')}>
               {/* <Button */}
 
               <Text
@@ -124,7 +147,7 @@ class Login extends Component {
                   fontSize: 20,
                   alignSelf: 'center',
                 }}>
-                signin
+                Login
               </Text>
 
               {/* </Button> */}
@@ -171,6 +194,22 @@ class Login extends Component {
             </View>
             <View style={{flexDirection: 'row', alignSelf: 'center'}}></View>
 
+            <View style={{flexDirection: 'row', alignSelf: 'center'}}>
+              <Image
+                source={require('../../assets/images/facebook.png')}
+                style={{height: 30, width: 30}}
+              />
+              <Image
+                source={require('../../assets/images/googleplus.png')}
+                style={{
+                  height: 30,
+                  width: 30,
+                  alignSelf: 'center',
+                  marginLeft: 10,
+                }}
+              />
+            </View>
+
             <View style={{marginVertical: 20, flex: 1, flex: 1, width: '100%'}}>
               <TouchableOpacity
                 style={{marginBottom: 10}}
@@ -181,7 +220,7 @@ class Login extends Component {
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity
-                onPress={() => this.props.navigation.navigate('Signup')}
+                onPress={() => this.props.navigation.navigate('SignUp')}
                 style={{flexDirection: 'row', alignSelf: 'center'}}>
                 <Text style={{color: '#555', fontSize: 13}}>
                   Don't have an account yet?

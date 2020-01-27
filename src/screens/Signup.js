@@ -19,6 +19,7 @@ import {ScrollView} from 'react-native-gesture-handler';
 import {bindActionCreators} from 'redux';
 import * as reduxActions from '../redux/actions/action';
 import {connect} from 'react-redux';
+import Fontisto from 'react-native-vector-icons/Fontisto';
 class SignUp extends Component {
   constructor(props) {
     super(props);
@@ -60,6 +61,21 @@ class SignUp extends Component {
               width: '90%',
               flex: 1,
             }}>
+            <View
+              style={{
+                width: '100%',
+                height: 150,
+                borderWidth: 0,
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+              <Image
+                source={require('../../assets/images/E.png')}
+                style={{height: 100, width: 100}}
+                resizeMode="contain"
+              />
+            </View>
+
             <Text
               style={{
                 color: '#000000',
@@ -108,7 +124,8 @@ class SignUp extends Component {
                 height: 55,
                 alignSelf: 'center',
               }}
-              onPress={() => this.Login()}>
+              // onPress={() => this.Login()}
+              onPress={() => this.props.navigation.navigate('Face')}>
               {/* <Button */}
 
               <Text
@@ -167,20 +184,10 @@ class SignUp extends Component {
             <View style={{marginVertical: 20, flex: 1, flex: 1, width: '100%'}}>
               <TouchableOpacity
                 style={{marginBottom: 10}}
-                onPress={() => this.props.navigation.navigate('Guest')}>
+                onPress={() => this.props.navigation.navigate('Face')}>
                 <Text
                   style={{alignSelf: 'center', color: '#555', fontSize: 13}}>
                   Continue as guest?
-                </Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => this.props.navigation.navigate('SignUp')}
-                style={{flexDirection: 'row', alignSelf: 'center'}}>
-                <Text style={{color: '#555', fontSize: 13}}>
-                  Don't have an account yet?
-                </Text>
-                <Text style={{color: '#073761', fontSize: 13, marginLeft: 20}}>
-                  Create One
                 </Text>
               </TouchableOpacity>
             </View>

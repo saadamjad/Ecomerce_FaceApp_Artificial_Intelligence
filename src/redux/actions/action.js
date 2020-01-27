@@ -1,6 +1,6 @@
 import * as actionTypes from './types';
+import firebase from 'react-native-firebase';
 export const Login = (data, navigation) => async dispatch => {
-  //console.warn(data.email);
   alert('signup chal gya ha ');
   // dispatch({
   //   type: actionTypes.SET_USER_DATA,
@@ -8,6 +8,14 @@ export const Login = (data, navigation) => async dispatch => {
 
   // });
 };
-export const Signup = () => async dispatch => {
-  alert('signup chal gya ha ');
+export const Signup = (userData, navigation) => async dispatch => {
+  // alert('signup chal gya ha ');
+  // console.warn('this is user daata', userData);
+  dispatch({type: actionTypes.START_LOADING});
+  firebase
+    .auth()
+    .signInWithEmailAndPassword(userData.email, userData.password)
+    .then(res => {
+      console.log('not login');
+    });
 };
