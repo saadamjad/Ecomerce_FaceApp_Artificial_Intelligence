@@ -1,91 +1,91 @@
-import React from 'react';
-import {createAppContainer} from 'react-navigation';
-import {createStackNavigator} from 'react-navigation-stack';
+import React from "react";
+import { createAppContainer } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
 
-import Home from './Home';
-import Login from './Login';
-import Signup from './Signup';
-import Face from './Facescreen';
-import Productdetails from './Productdetails';
-import Checkout from './Checkout';
-import Addtocart from './Addtocart';
-import Allproducts from './Allproducts';
-import Allshops from './Allshops';
-import Joinasseller from './JoinasSeller';
-import Myaccount from './Myaccount';
+import Home from "./Home";
+import Login from "./Login";
+import Signup from "./Signup";
+import Face from "./Facescreen";
+import Productdetails from "./Productdetails";
+import Checkout from "./Checkout";
+import Addtocart from "./Addtocart";
+import Allproducts from "./Allproducts";
+import Allshops from "./Allshops";
+import Joinasseller from "./JoinasSeller";
+import Myaccount from "./Myaccount";
 
 const AppNavigator = createStackNavigator(
   {
     Home: {
       screen: Home,
       navigationOptions: () => ({
-        header: null,
-      }),
+        header: null
+      })
     },
     Login: {
       screen: Login,
       navigationOptions: () => ({
-        header: null,
-      }),
+        header: null
+      })
     },
     Signup: {
       screen: Signup,
       navigationOptions: () => ({
-        header: null,
-      }),
+        header: null
+      })
     },
     Face: {
       screen: Face,
       navigationOptions: () => ({
-        header: null,
-      }),
+        header: null
+      })
     },
     Productdetails: {
       screen: Productdetails,
       navigationOptions: () => ({
-        header: null,
-      }),
+        header: null
+      })
     },
     Checkout: {
       screen: Checkout,
       navigationOptions: () => ({
-        header: null,
-      }),
+        header: null
+      })
     },
     Addtocart: {
       screen: Addtocart,
       navigationOptions: () => ({
-        header: null,
-      }),
+        header: null
+      })
     },
     Allproducts: {
       screen: Allproducts,
       navigationOptions: () => ({
-        header: null,
-      }),
+        header: null
+      })
     },
     Allshops: {
       screen: Allshops,
       navigationOptions: () => ({
-        header: null,
-      }),
+        header: null
+      })
     },
     Joinasseller: {
       screen: Joinasseller,
       navigationOptions: () => ({
-        header: null,
-      }),
+        header: null
+      })
     },
     Myaccount: {
       screen: Myaccount,
       navigationOptions: () => ({
-        header: null,
-      }),
-    },
+        header: null
+      })
+    }
   },
   {
-    initialRouteName: 'Login',
-  },
+    initialRouteName: "Login"
+  }
 );
 
 const AppContainer = createAppContainer(AppNavigator);

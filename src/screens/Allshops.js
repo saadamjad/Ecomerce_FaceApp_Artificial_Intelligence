@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   ImageBackground,
   Image,
@@ -9,21 +9,21 @@ import {
   TextInput,
   TouchableWithoutFeedback,
   SafeAreaView,
-  ScrollView,
-} from 'react-native';
-import {Header, Body, Left, Right} from 'native-base';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
+  ScrollView
+} from "react-native";
+import { Header, Body, Left, Right } from "native-base";
+import FontAwesome from "react-native-vector-icons/FontAwesome";
 
-import firebase from 'react-native-firebase';
+import firebase from "react-native-firebase";
 export default class Shops extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       clothes: [],
       shoes: [],
-      Jewellary: [],
+      Jewellary: []
     };
-    this.props.navigation.addListener('willFocus', this.componentWillFocus);
+    this.props.navigation.addListener("willFocus", this.componentWillFocus);
   }
   componentWillFocus = async () => {
     this.gettingClothes();
@@ -39,92 +39,95 @@ export default class Shops extends React.Component {
     let data = [];
     const inventory = await firebase
       .firestore()
-      .collection('ShopAdmin')
+      .collection("ShopAdmin")
       .get();
     inventory.docs.map((doc, index) => {
-      console.log('inventory data', doc);
+      console.log("inventory data", doc);
       // console.log(doc._data.businessName +' '+doc._data.typeOfBusiness+' '+doc._data.permission )
-      if (doc._data.catagory == 'Clothes') {
+      if (doc._data.catagory == "Clothes") {
         console.log(doc._data.shopName);
         data.push(doc);
       }
     });
     console.log();
     this.setState({
-      clothes: data,
+      clothes: data
     });
-    console.log('osama', this.state.clothes);
+    console.log("osama", this.state.clothes);
   }
   async gettingShoes() {
-    console.log('========================================================');
+    console.log("========================================================");
     let data = [];
     const inventory = await firebase
       .firestore()
-      .collection('ShopAdmin')
+      .collection("ShopAdmin")
       .get();
     inventory.docs.map((doc, index) => {
-      if (doc._data.catagory == 'Shoes') {
+      if (doc._data.catagory == "Shoes") {
         data.push(doc);
       }
     });
     this.setState({
-      shoes: data,
+      shoes: data
     });
-    console.log('osama shoes', this.state.shoes);
+    console.log("osama shoes", this.state.shoes);
   }
   async gettingJewellary() {
-    console.log('========================================================');
+    console.log("========================================================");
     let data = [];
     const inventory = await firebase
       .firestore()
-      .collection('ShopAdmin')
+      .collection("ShopAdmin")
       .get();
     inventory.docs.map((doc, index) => {
-      if (doc._data.catagory == 'Jewellary and accessories') {
+      if (doc._data.catagory == "Jewellary and accessories") {
         data.push(doc);
       }
     });
     console.log(data);
     this.setState({
-      Jewellary: data,
+      Jewellary: data
     });
   }
 
   render() {
     return (
-      <SafeAreaView style={{flex: 1, backgroundColor: '#ffff'}}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: "#ffff" }}>
         <ScrollView>
           <Header
             style={{
               marginBottom: 10,
-              backgroundColor: 'white',
+              backgroundColor: "white",
               height: 50,
-              borderBottomColor: 'black',
+              borderBottomColor: "black",
               borderBottomWidth: 1,
               elevation: this.props.elevation,
-              justifyContent: 'center',
-              paddingBottom: 15,
-            }}>
-            <Left style={{flex: 1}}>
+              justifyContent: "center",
+              paddingBottom: 15
+            }}
+          >
+            <Left style={{ flex: 1 }}>
               <TouchableOpacity
-                onPress={() => this.props.navigation.openDrawer()}
+                //    onPress={() => this.props.navigation.openDrawer()}
                 style={{
                   top: -10,
-                  width: '20%',
-                  height: '100%',
-                  justifyContent: 'center',
-                }}>
+                  width: "20%",
+                  height: "100%",
+                  justifyContent: "center"
+                }}
+              >
                 <View
                   style={{
                     width: 40,
                     height: 40,
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}>
+                    alignItems: "center",
+                    justifyContent: "center"
+                  }}
+                >
                   {/* <Feather name={"align-justify"} size={25} color={'black'} /> */}
                   <Image
-                    style={{width: 30, height: 30, top: 4, marginLeft: 2}}
-                    source={require('../../assets/images/icondraw.png')}
+                    style={{ width: 30, height: 30, top: 4, marginLeft: 2 }}
+                    source={require("../../assets/images/icondraw.png")}
                   />
                 </View>
               </TouchableOpacity>
@@ -133,34 +136,37 @@ export default class Shops extends React.Component {
             <Body
               style={{
                 flex: 1,
-                alignItems: 'center',
-              }}>
-              <Text style={{color: 'black', fontSize: 20, height: 20}}>
-                {' '}
+                alignItems: "center"
+              }}
+            >
+              <Text style={{ color: "black", fontSize: 20, height: 20 }}>
+                {" "}
                 SHOPS
               </Text>
             </Body>
-            <Right style={{flex: 1, justifyContent: 'center'}}>
+            <Right style={{ flex: 1, justifyContent: "center" }}>
               <TouchableWithoutFeedback
-                onPress={() => this.props.navigation.openDrawer()}
-                style={{justifyContent: 'flex-start'}}>
+                //   onPress={() => this.props.navigation.openDrawer()}
+                style={{ justifyContent: "flex-start" }}
+              >
                 {/* <Entypo name={'menu'} color={this.props.color} size={25} style={{margin: 15}} /> */}
                 <Image
                   style={[
-                    {width: 55, height: 55, top: -7, marginLeft: 0, left: 8},
+                    { width: 55, height: 55, top: -7, marginLeft: 0, left: 8 }
                   ]}
-                  source={require('../../assets/images/heartico.png')}
+                  source={require("../../assets/images/heartico.png")}
                 />
               </TouchableWithoutFeedback>
               <TouchableWithoutFeedback
-                onPress={() => this.props.navigation.navigate('MyCart')}
-                style={{justifyContent: 'flex-start'}}>
+                onPress={() => this.props.navigation.navigate("MyCart")}
+                style={{ justifyContent: "flex-start" }}
+              >
                 {/* <Entypo name={'menu'} color={this.props.color} size={25} style={{margin: 15}} /> */}
                 <Image
                   style={[
-                    {width: 50, height: 50, top: -10, marginLeft: 0, left: 7},
+                    { width: 50, height: 50, top: -10, marginLeft: 0, left: 7 }
                   ]}
-                  source={require('../../assets/images/cartico.png')}
+                  source={require("../../assets/images/cartico.png")}
                 />
               </TouchableWithoutFeedback>
             </Right>
@@ -168,45 +174,47 @@ export default class Shops extends React.Component {
 
           <View
             style={{
-              flexDirection: 'row',
-              width: '100%',
-              justifyContent: 'space-around',
+              flexDirection: "row",
+              width: "100%",
+              justifyContent: "space-around",
               marginVertical: 20,
-              flexWrap: 'wrap',
-              backgroundColor: 'white',
-              alignItems: 'center',
-            }}>
+              flexWrap: "wrap",
+              backgroundColor: "white",
+              alignItems: "center"
+            }}
+          >
             <TouchableOpacity
               style={{
                 elevation: 0,
                 // height: 100,
-                alignSelf: 'center',
-                backgroundColor: 'white',
-                alignItems: 'center',
-                justifyContent: 'center',
+                alignSelf: "center",
+                backgroundColor: "white",
+                alignItems: "center",
+                justifyContent: "center",
                 marginVertical: 30,
                 width: 150,
                 borderRadius: 10,
                 //  paddingVertical: 10,
-                overflow: 'hidden',
-                shadowColor: '#f3f3f3',
+                overflow: "hidden",
+                shadowColor: "#f3f3f3",
                 marginBottom: 17,
                 height: 170,
 
                 shadowOffset: {
                   width: 0,
-                  height: 4,
+                  height: 4
                 },
                 shadowOpacity: 0.52,
                 shadowRadius: 20,
 
-                elevation: 4,
+                elevation: 4
               }}
-              onPress={() => this.props.navigation.navigate('Catagories')}>
-              <View style={{height: '80%', width: '100%', borderWidth: 0}}>
+              onPress={() => this.props.navigation.navigate("Catagories")}
+            >
+              <View style={{ height: "80%", width: "100%", borderWidth: 0 }}>
                 <Image
-                  source={require('../../assets/images/docter2.jpg')}
-                  style={{width: '100%', height: '90%'}}
+                  source={require("../../assets/images/docter2.jpg")}
+                  style={{ width: "100%", height: "90%" }}
                   resizeMode="cover"
                 />
               </View>
@@ -215,10 +223,11 @@ export default class Shops extends React.Component {
                 style={{
                   borderBottomWidth: 1,
                   paddingVertical: 5,
-                  height: '20%',
-                  borderColor: 'black',
-                  color: 'black',
-                }}>
+                  height: "20%",
+                  borderColor: "black",
+                  color: "black"
+                }}
+              >
                 shop 1
               </Text>
             </TouchableOpacity>
@@ -227,34 +236,34 @@ export default class Shops extends React.Component {
               style={{
                 elevation: 0,
                 // height: 100,
-                alignSelf: 'center',
-                backgroundColor: 'white',
-                alignItems: 'center',
-                justifyContent: 'center',
+                alignSelf: "center",
+                backgroundColor: "white",
+                alignItems: "center",
+                justifyContent: "center",
                 marginVertical: 30,
                 width: 150,
                 borderRadius: 10,
                 //  paddingVertical: 10,
-                overflow: 'hidden',
-                shadowColor: '#f3f3f3',
+                overflow: "hidden",
+                shadowColor: "#f3f3f3",
                 marginBottom: 17,
                 height: 170,
 
                 shadowOffset: {
                   width: 0,
-                  height: 4,
+                  height: 4
                 },
                 shadowOpacity: 0.52,
                 shadowRadius: 20,
 
-                elevation: 4,
+                elevation: 4
               }}
               //   onPress={() => this.props.navigation.navigate("SelectCategory")}
             >
-              <View style={{height: '80%', width: '100%', borderWidth: 0}}>
+              <View style={{ height: "80%", width: "100%", borderWidth: 0 }}>
                 <Image
-                  source={require('../../assets/images/docter2.jpg')}
-                  style={{width: '100%', height: '90%'}}
+                  source={require("../../assets/images/docter2.jpg")}
+                  style={{ width: "100%", height: "90%" }}
                   resizeMode="cover"
                 />
               </View>
@@ -263,10 +272,11 @@ export default class Shops extends React.Component {
                 style={{
                   borderBottomWidth: 1,
                   paddingVertical: 5,
-                  height: '20%',
-                  borderColor: 'black',
-                  color: 'black',
-                }}>
+                  height: "20%",
+                  borderColor: "black",
+                  color: "black"
+                }}
+              >
                 shop 2
               </Text>
             </TouchableOpacity>
@@ -275,39 +285,39 @@ export default class Shops extends React.Component {
               style={{
                 elevation: 0,
                 // height: 100,
-                alignSelf: 'center',
-                backgroundColor: 'white',
-                alignItems: 'center',
-                justifyContent: 'center',
+                alignSelf: "center",
+                backgroundColor: "white",
+                alignItems: "center",
+                justifyContent: "center",
                 marginVertical: 30,
                 width: 150,
                 borderRadius: 10,
                 //  paddingVertical: 10,
-                overflow: 'hidden',
-                shadowColor: '#f3f3f3',
+                overflow: "hidden",
+                shadowColor: "#f3f3f3",
                 marginBottom: 17,
                 height: 170,
 
                 shadowOffset: {
                   width: 0,
-                  height: 4,
+                  height: 4
                 },
                 shadowOpacity: 0.52,
                 shadowRadius: 20,
 
-                elevation: 4,
+                elevation: 4
               }}
               //   onPress={() => this.props.navigation.navigate("SelectCategory")}
             >
-              <View style={{height: '80%', width: '100%', borderWidth: 0}}>
+              <View style={{ height: "80%", width: "100%", borderWidth: 0 }}>
                 {/* <Image
                   source={require("../../assets/images/docter2.jpg")}
                   style={{ width: "100%", height: "110%" }}
                   resizeMode="stretch"
                 /> */}
                 <Image
-                  source={require('../../assets/images/docter3.jpg')}
-                  style={{width: '100%', height: '90%'}}
+                  source={require("../../assets/images/docter3.jpg")}
+                  style={{ width: "100%", height: "90%" }}
                   resizeMode="cover"
                 />
               </View>
@@ -316,10 +326,11 @@ export default class Shops extends React.Component {
                 style={{
                   borderBottomWidth: 1,
                   paddingVertical: 5,
-                  height: '20%',
-                  borderColor: 'black',
-                  color: 'black',
-                }}>
+                  height: "20%",
+                  borderColor: "black",
+                  color: "black"
+                }}
+              >
                 shop 2
               </Text>
             </TouchableOpacity>
@@ -328,39 +339,39 @@ export default class Shops extends React.Component {
               style={{
                 elevation: 0,
                 // height: 100,
-                alignSelf: 'center',
-                backgroundColor: 'white',
-                alignItems: 'center',
-                justifyContent: 'center',
+                alignSelf: "center",
+                backgroundColor: "white",
+                alignItems: "center",
+                justifyContent: "center",
                 marginVertical: 30,
                 width: 150,
                 borderRadius: 10,
                 //  paddingVertical: 10,
-                overflow: 'hidden',
-                shadowColor: '#f3f3f3',
+                overflow: "hidden",
+                shadowColor: "#f3f3f3",
                 marginBottom: 17,
                 height: 170,
 
                 shadowOffset: {
                   width: 0,
-                  height: 4,
+                  height: 4
                 },
                 shadowOpacity: 0.52,
                 shadowRadius: 20,
 
-                elevation: 4,
+                elevation: 4
               }}
               //   onPress={() => this.props.navigation.navigate("SelectCategory")}
             >
-              <View style={{height: '80%', width: '100%', borderWidth: 0}}>
+              <View style={{ height: "80%", width: "100%", borderWidth: 0 }}>
                 {/* <Image
                   source={require("../../assets/images/docter2.jpg")}
                   style={{ width: "100%", height: "110%" }}
                   resizeMode="stretch"
                 /> */}
                 <Image
-                  source={require('../../assets/images/docter2.jpg')}
-                  style={{width: '100%', height: '90%'}}
+                  source={require("../../assets/images/docter2.jpg")}
+                  style={{ width: "100%", height: "90%" }}
                   resizeMode="cover"
                 />
               </View>
@@ -369,10 +380,11 @@ export default class Shops extends React.Component {
                 style={{
                   borderBottomWidth: 1,
                   paddingVertical: 5,
-                  height: '20%',
-                  borderColor: 'black',
-                  color: 'black',
-                }}>
+                  height: "20%",
+                  borderColor: "black",
+                  color: "black"
+                }}
+              >
                 shop 2
               </Text>
             </TouchableOpacity>
@@ -380,39 +392,39 @@ export default class Shops extends React.Component {
               style={{
                 elevation: 0,
                 // height: 100,
-                alignSelf: 'center',
-                backgroundColor: 'white',
-                alignItems: 'center',
-                justifyContent: 'center',
+                alignSelf: "center",
+                backgroundColor: "white",
+                alignItems: "center",
+                justifyContent: "center",
                 marginVertical: 30,
                 width: 150,
                 borderRadius: 10,
                 //  paddingVertical: 10,
-                overflow: 'hidden',
-                shadowColor: '#f3f3f3',
+                overflow: "hidden",
+                shadowColor: "#f3f3f3",
                 marginBottom: 17,
                 height: 170,
 
                 shadowOffset: {
                   width: 0,
-                  height: 4,
+                  height: 4
                 },
                 shadowOpacity: 0.52,
                 shadowRadius: 20,
 
-                elevation: 4,
+                elevation: 4
               }}
               //   onPress={() => this.props.navigation.navigate("SelectCategory")}
             >
-              <View style={{height: '80%', width: '100%', borderWidth: 0}}>
+              <View style={{ height: "80%", width: "100%", borderWidth: 0 }}>
                 {/* <Image
                   source={require("../../assets/images/docter2.jpg")}
                   style={{ width: "100%", height: "110%" }}
                   resizeMode="stretch"
                 /> */}
                 <Image
-                  source={require('../../assets/images/docter2.jpg')}
-                  style={{width: '100%', height: '90%'}}
+                  source={require("../../assets/images/docter2.jpg")}
+                  style={{ width: "100%", height: "90%" }}
                   resizeMode="cover"
                 />
               </View>
@@ -421,10 +433,11 @@ export default class Shops extends React.Component {
                 style={{
                   borderBottomWidth: 1,
                   paddingVertical: 5,
-                  height: '20%',
-                  borderColor: 'black',
-                  color: 'black',
-                }}>
+                  height: "20%",
+                  borderColor: "black",
+                  color: "black"
+                }}
+              >
                 shop 2
               </Text>
             </TouchableOpacity>
@@ -433,39 +446,39 @@ export default class Shops extends React.Component {
               style={{
                 elevation: 0,
                 // height: 100,
-                alignSelf: 'center',
-                backgroundColor: 'white',
-                alignItems: 'center',
-                justifyContent: 'center',
+                alignSelf: "center",
+                backgroundColor: "white",
+                alignItems: "center",
+                justifyContent: "center",
                 marginVertical: 30,
                 width: 150,
                 borderRadius: 10,
                 //  paddingVertical: 10,
-                overflow: 'hidden',
-                shadowColor: '#f3f3f3',
+                overflow: "hidden",
+                shadowColor: "#f3f3f3",
                 marginBottom: 17,
                 height: 170,
 
                 shadowOffset: {
                   width: 0,
-                  height: 4,
+                  height: 4
                 },
                 shadowOpacity: 0.52,
                 shadowRadius: 20,
 
-                elevation: 4,
+                elevation: 4
               }}
               //   onPress={() => this.props.navigation.navigate("SelectCategory")}
             >
-              <View style={{height: '80%', width: '100%', borderWidth: 0}}>
+              <View style={{ height: "80%", width: "100%", borderWidth: 0 }}>
                 {/* <Image
                   source={require("../../assets/images/docter2.jpg")}
                   style={{ width: "100%", height: "110%" }}
                   resizeMode="stretch"
                 /> */}
                 <Image
-                  source={require('../../assets/images/docter3.jpg')}
-                  style={{width: '100%', height: '90%'}}
+                  source={require("../../assets/images/docter3.jpg")}
+                  style={{ width: "100%", height: "90%" }}
                   resizeMode="cover"
                 />
               </View>
@@ -474,10 +487,11 @@ export default class Shops extends React.Component {
                 style={{
                   borderBottomWidth: 1,
                   paddingVertical: 5,
-                  height: '20%',
-                  borderColor: 'black',
-                  color: 'black',
-                }}>
+                  height: "20%",
+                  borderColor: "black",
+                  color: "black"
+                }}
+              >
                 shop 2
               </Text>
             </TouchableOpacity>
@@ -521,11 +535,12 @@ export default class Shops extends React.Component {
         </ScrollView>
         <View
           style={{
-            position: 'absolute',
+            position: "absolute",
             bottom: 0,
             flex: 1,
-            width: '100%',
-          }}></View>
+            width: "100%"
+          }}
+        ></View>
       </SafeAreaView>
     );
   }
@@ -534,10 +549,10 @@ export default class Shops extends React.Component {
 const styles = StyleSheet.create({
   item: {
     // borderBottomColor: "#000",
-    backgroundColor: 'white',
-    alignSelf: 'center',
-    width: '90%',
+    backgroundColor: "white",
+    alignSelf: "center",
+    width: "90%",
     borderRadius: 15,
-    elevation: 1,
-  },
+    elevation: 1
+  }
 });

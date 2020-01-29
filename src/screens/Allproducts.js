@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   ImageBackground,
   Image,
@@ -9,15 +9,15 @@ import {
   TextInput,
   TouchableWithoutFeedback,
   SafeAreaView,
-  ScrollView,
-} from 'react-native';
-import {Header, Body, Left, Right} from 'native-base';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
+  ScrollView
+} from "react-native";
+import { Header, Body, Left, Right } from "native-base";
+import FontAwesome from "react-native-vector-icons/FontAwesome";
 
 // import Footer1 from './../../components/Footer';
 
-import Feather from 'react-native-vector-icons/Feather';
-import firebase from 'react-native-firebase';
+import Feather from "react-native-vector-icons/Feather";
+import firebase from "react-native-firebase";
 export default class AllProduct extends React.Component {
   constructor(props) {
     super(props);
@@ -25,44 +25,60 @@ export default class AllProduct extends React.Component {
       clothes: [],
       shoes: [],
       Jewellary: [],
+      Images: [
+        { image: require("../../assets/images/product.png") },
+
+        { image: require("../../assets/images/product.png") },
+
+        { image: require("../../assets/images/product.png") },
+
+        { image: require("../../assets/images/product.png") },
+
+        { image: require("../../assets/images/product.png") },
+
+        { image: require("../../assets/images/product.png") }
+      ]
     };
   }
 
   render() {
     return (
-      <SafeAreaView style={{flex: 1, backgroundColor: '#ffff'}}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: "#ffff" }}>
         <ScrollView>
           <Header
             style={{
               marginBottom: 10,
-              backgroundColor: 'white',
+              backgroundColor: "white",
               height: 50,
-              borderBottomColor: 'black',
+              borderBottomColor: "black",
               borderBottomWidth: 1,
               elevation: this.props.elevation,
-              justifyContent: 'center',
-              paddingBottom: 15,
-            }}>
-            <Left style={{flex: 1}}>
+              justifyContent: "center",
+              paddingBottom: 15
+            }}
+          >
+            <Left style={{ flex: 1 }}>
               <TouchableOpacity
-                onPress={() => this.props.navigation.openDrawer()}
+                //  onPress={() => this.props.navigation.openDrawer()}
                 style={{
                   top: -10,
-                  width: '20%',
-                  height: '100%',
-                  justifyContent: 'center',
-                }}>
+                  width: "20%",
+                  height: "100%",
+                  justifyContent: "center"
+                }}
+              >
                 <View
                   style={{
                     width: 40,
                     height: 40,
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}>
+                    alignItems: "center",
+                    justifyContent: "center"
+                  }}
+                >
                   {/* <Feather name={"align-justify"} size={25} color={'black'} /> */}
                   <Image
-                    style={{width: 30, height: 30, top: 4, marginLeft: 2}}
-                    source={require('../../assets/images/icondraw.png')}
+                    style={{ width: 30, height: 30, top: 4, marginLeft: 2 }}
+                    source={require("../../assets/images/icondraw.png")}
                   />
                 </View>
               </TouchableOpacity>
@@ -71,32 +87,36 @@ export default class AllProduct extends React.Component {
             <Body
               style={{
                 flex: 1,
-                alignItems: 'center',
-              }}>
-              <Text style={{color: 'black', fontSize: 20, top: 0, height: 0}}>
-                {' '}
+                alignItems: "center"
+              }}
+            >
+              <Text style={{ color: "black", fontSize: 20, top: 0, height: 0 }}>
+                {" "}
                 All products
               </Text>
             </Body>
-            <Right style={{flex: 1, justifyContent: 'center'}}>
-              <TouchableWithoutFeedback style={{justifyContent: 'flex-start'}}>
+            <Right style={{ flex: 1, justifyContent: "center" }}>
+              <TouchableWithoutFeedback
+                style={{ justifyContent: "flex-start" }}
+              >
                 {/* <Entypo name={'menu'} color={this.props.color} size={25} style={{margin: 15}} /> */}
                 <Image
                   style={[
-                    {width: 55, height: 55, top: -7, marginLeft: 0, left: 8},
+                    { width: 55, height: 55, top: -7, marginLeft: 0, left: 8 }
                   ]}
-                  source={require('../../assets/images/heartico.png')}
+                  source={require("../../assets/images/heartico.png")}
                 />
               </TouchableWithoutFeedback>
               <TouchableWithoutFeedback
-                onPress={() => this.props.navigation.navigate('MyCart')}
-                style={{justifyContent: 'flex-start'}}>
+                onPress={() => this.props.navigation.navigate("MyCart")}
+                style={{ justifyContent: "flex-start" }}
+              >
                 {/* <Entypo name={'menu'} color={this.props.color} size={25} style={{margin: 15}} /> */}
                 <Image
                   style={[
-                    {width: 50, height: 50, top: -10, marginLeft: 0, left: 7},
+                    { width: 50, height: 50, top: -10, marginLeft: 0, left: 7 }
                   ]}
-                  source={require('../../assets/images/cartico.png')}
+                  source={require("../../assets/images/cartico.png")}
                 />
               </TouchableWithoutFeedback>
             </Right>
@@ -105,59 +125,58 @@ export default class AllProduct extends React.Component {
           <View>
             <Image
               style={{
-                alignSelf: 'flex-end',
+                alignSelf: "flex-end",
                 height: 40,
                 width: 200,
-                marginRight: 10,
+                marginRight: 10
               }}
-              source={require('../../assets/images/filter.png')}
+              source={require("../../assets/images/filter.png")}
             />
           </View>
-          <TouchableOpacity
-            style={{}}
-            onPress={() => this.props.navigation.navigate('Productdetails')}>
-            <Image
-              style={{
-                height: 200,
-                width: '100%',
-                marginRight: 10,
-                marginTop: 10,
-              }}
-              source={require('../../assets/images/product.png')}
-            />
+          <View
+            style={{
+              flexWrap: "wrap",
+              flexDirection: "row",
+              borderWidth: 0,
+              justifyContent: "space-around",
+              flex: 1,
+              padding: 5
+              //   width: "100%",
+              // flexWrap: "nowrap",
+            }}
+          >
+            {this.state.Images.map((data, i) => {
+              return (
+                <TouchableOpacity
+                  style={{
+                    width: 150,
+                    height: 270,
+                    borderWidth: 0,
+                    marginVertical: 15,
+                    paddingVertical: 2,
+                    overflow: "hidden"
+                  }}
+                  onPress={() =>
+                    this.props.navigation.navigate("Productdetails")
+                  }
+                >
+                  <Image
+                    style={{
+                      height: "100%",
+                      width: "100%",
+                      marginRight: 10,
+                      marginTop: 10,
+                      borderWidth: 0
+                    }}
+                    source={data.image}
+                    resizeMode="contain"
+                  />
 
-            {/* <Image style={{height:200,width:'100%',marginRight:10,marginTop:10}} source={require('../../assets/images/product.png')}/> */}
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={{}}
-            onPress={() => this.props.navigation.navigate('Productdetails')}>
-            <Image
-              style={{
-                height: 200,
-                width: '100%',
-                marginRight: 10,
-                marginTop: 10,
-              }}
-              source={require('../../assets/images/product.png')}
-            />
-
-            {/* <Image style={{height:200,width:'100%',marginRight:10,marginTop:10}} source={require('../../assets/images/product.png')}/> */}
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={{}}
-            onPress={() => this.props.navigation.navigate('Productdetails')}>
-            <Image
-              style={{
-                height: 200,
-                width: '100%',
-                marginRight: 10,
-                marginTop: 10,
-              }}
-              source={require('../../assets/images/product.png')}
-            />
-
-            {/* <Image style={{height:200,width:'100%',marginRight:10,marginTop:10}} source={require('../../assets/images/product.png')}/> */}
-          </TouchableOpacity>
+                  {/* <Image style={{height:200,width:'100%',marginRight:10,marginTop:10}} source={require('../../assets/images/product.png')}/> */}
+                </TouchableOpacity>
+              );
+            })}
+          </View>
         </ScrollView>
       </SafeAreaView>
     );
@@ -167,10 +186,10 @@ export default class AllProduct extends React.Component {
 const styles = StyleSheet.create({
   item: {
     // borderBottomColor: "#000",
-    backgroundColor: 'white',
-    alignSelf: 'center',
-    width: '90%',
+    backgroundColor: "white",
+    alignSelf: "center",
+    width: "90%",
     borderRadius: 15,
-    elevation: 1,
-  },
+    elevation: 1
+  }
 });
