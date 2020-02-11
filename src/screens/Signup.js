@@ -30,6 +30,7 @@ class SignUp extends Component {
     };
   }
   Login() {
+    this.props.navigation.navigate('Home')
     if (
       this.state.email == "" ||
       this.state.password == "" ||

@@ -122,58 +122,61 @@ export default class AllProduct extends React.Component {
             </Right>
           </Header>
 
-          <View>
-            <Image
-              style={{
-                alignSelf: "flex-end",
-                height: 40,
-                width: 200,
-                marginRight: 10
-              }}
-              source={require("../../assets/images/filter.png")}
-            />
-          </View>
           <View
             style={{
-              flexWrap: "wrap",
-              flexDirection: "row",
-              borderWidth: 0,
-              justifyContent: "space-around",
-              flex: 1,
-              padding: 5
-              //   width: "100%",
-              // flexWrap: "nowrap",
+              padding:10,alignItems:'center',
+              
             }}
           >
             {this.state.Images.map((data, i) => {
               return (
-                <TouchableOpacity
-                  style={{
-                    width: 150,
-                    height: 270,
-                    borderWidth: 0,
-                    marginVertical: 15,
-                    paddingVertical: 2,
-                    overflow: "hidden"
-                  }}
-                  onPress={() =>
-                    this.props.navigation.navigate("Productdetails")
-                  }
-                >
-                  <Image
-                    style={{
-                      height: "100%",
-                      width: "100%",
-                      marginRight: 10,
-                      marginTop: 10,
-                      borderWidth: 0
-                    }}
-                    source={data.image}
-                    resizeMode="contain"
-                  />
+                <View  style={{paddingVertical:20,shadowColor: "#000",
+                shadowOffset: {
+                  width: 0,
+                  height: 3,
+                },
+                shadowOpacity: 0.29,
+                shadowRadius: 4.65,
+                
+                elevation: 7}}>
+                <TouchableOpacity >
+                    <Image  source={require("./../../assets/images/docter2.jpg")}
+               
+                style={{ height: 200,width:350}}
+                resizeMode="cover"/>
+                 <View style={{paddingHorizontal:5,paddingVertical:10}}>
+            <View>
+                <Text style={{fontWeight:'bold',color:'#25acfd',fontSize:20}}>Woonder Skin Care</Text>
+                <Text style={{fontWeight:'100',color:'#7b7b7b',fontSize:16}}>Profuct Info in 1 line</Text>
+            </View>
+            <View style={{ flexDirection: "row", paddingVertical: 10 }}>
+              <View style={{ width: "70%" }}>
+                <Text style={{ color: "#2b3b48", fontSize: 15 }}>
+                  5 Star
+               
+                </Text>
+              </View>
 
-                  {/* <Image style={{height:200,width:'100%',marginRight:10,marginTop:10}} source={require('../../assets/images/product.png')}/> */}
-                </TouchableOpacity>
+              <View style={{}}>
+                <Text
+                  style={{
+                    textAlign: "right",
+                    marginLeft: 5,
+                    color: "black"
+                  }}
+                >
+                  Price: <Text style={{fontWeight:'bold',color:'#25acfd'}}>170$</Text>
+                </Text>
+              </View>
+            </View>
+          
+        
+
+          </View> 
+          
+                  </TouchableOpacity>
+
+             </View>
               );
             })}
           </View>
