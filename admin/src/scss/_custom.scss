@@ -1,0 +1,115 @@
+// Here you can add other styles
+.custonbtn{
+    float: right;
+    width: 200px;
+}
+.userbtn{
+   
+    display: inline-block;
+    float: right;
+    /* text-shadow: 0 0 black; */
+    /* height: 26px; */
+    padding: 0px 34px;
+    background-color: #48b6de;
+    border-color: #48b6de;
+}
+.upActionbtn{
+    display: inline-block;
+    float: right;
+    /* text-shadow: 0 0 black; */
+    /* height: 26px; */
+    padding: 0px 34px;
+    background-color: #48b6de;
+    border-color: #48b6de;
+}
+.userbtn:hover{
+    background-color: #1b9fd0;
+    border-color: #48b6de;
+}
+.error{
+    margin-left: 8px;
+    color: red;
+    display: inline-block;
+}
+.hide{
+    display: none;
+}
+.loginBtn{
+    margin-left: -12px;
+    margin-top: -14px;
+}
+.dpimg{
+
+
+height: 100px;
+width: 100px;
+border-radius: 50%;
+padding: 10px;
+margin: 10px;
+}
+.profileHeading{
+    position: absolute;
+    top: 30%;
+    font-size: 29px;
+    left: 46px;
+}
+.qrMain{
+    text-align: center;
+}
+.qrsec{
+    h3{
+        margin-bottom: 20px
+    }
+    padding: 20px;
+    text-align: center;
+}
+.nameRow{
+    width: 200px;
+}
+.idRow{
+    // width: 100px;
+}
+.editRow{
+    width: 150px;
+}
+.pagination{
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    border-radius: 0.25rem;
+    float: right;
+    margin-right: 17px;
+}
+.datePicker{
+    .react-date-picker__wrapper{
+    display: flex;
+    border: thin solid #e4e7ea;
+    padding: 1px 21px;
+    color: #555;
+    border-radius: 5px;
+    }
+
+}
+.radioClass{
+    margin-right: 10px;
+}
+.table th,.table td {
+    vertical-align: inherit !important;
+}
+.registerBtn{
+    margin-left: 21px;
+
+}
+.img-avatar, .avatar > img, .img-circle{
+    max-width: 36px; 
+    height: auto;
+    border-radius: 50em;
+    
+    width: 100%;
+    height: 100%;
+}
+.imageUpload{       height: 60px;
+    width: 60px;
+    border: 1px solid #cccccc;
+    margin: 0px 13px;
+}

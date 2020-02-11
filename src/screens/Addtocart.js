@@ -13,7 +13,7 @@ import {
 } from "react-native";
 import { Header, Body, Left, Right, Container, Content } from "native-base";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
-import Entypo from "react-native-vector-icons/Entypo";
+import Fontisto from "react-native-vector-icons/Fontisto";
 
 import { Col, Row } from "react-native-easy-grid";
 
@@ -91,7 +91,7 @@ export default class MyCart extends React.Component {
         //  contentContainerStyle={{ flexGrow: 1 }}
         //showsVerticalScrollIndicator={false}
         >
-          <Content style={{ marginBottom: 120 }}>
+          <Content style={{ marginBottom: 10 }}>
             <Header
               style={{
                 marginBottom: 10,
@@ -193,12 +193,20 @@ export default class MyCart extends React.Component {
                     style={{
                       flexDirection: "row",
                       marginVertical: 5,
-                      backgroundColor: "#f2f3f5",
+                      shadowColor: "#000",
+                      shadowOffset: {
+                        width: 0,
+                        height: 10,
+                      },
+                      shadowOpacity: 0.32,
+                      shadowRadius: 6.46,
+                      
+                      elevation: 4,
                       width: "100%",
-                      paddingVertical: 5,
+                      paddingVertical:1,
                       paddingLeft: 10,
                       borderWidth: 0,
-                      borderRadius: 5
+               
                     }}
                   >
                     <View
@@ -209,7 +217,7 @@ export default class MyCart extends React.Component {
                         overflow: "hidden",
                         borderColor: "#8ca9af",
                         height: 80,
-                        borderRadius: 7,
+                 
                         overflow: "hidden"
                       }}
                     >
@@ -230,27 +238,27 @@ export default class MyCart extends React.Component {
                         height: 100,
                         overflow: "hidden",
                         justifyContent: "center",
-                        paddingLeft: 15
+                        paddingLeft: 10
                       }}
                     >
-                      <Text style={{ color: "#3b3d3c", fontSize: 17 }}>
+                      <Text style={{ color: "#3b3d3c", fontSize: 17 ,fontWeight:'bold'}}>
                         {" "}
                         {item.Name}{" "}
                       </Text>
                       <Text style={{ color: "#47484a", paddingVertical: 6 }}>
-                        {" "}
-                        {item.Orderno}{" "}
+                      
+                       <Text  style={{ color: "#3b3d3c",fontWeight:'bold'}}> Price:</Text> {item.price}{" "}
                       </Text>
                       <Text style={{ color: "#3c3d3f", fontWeight: "500" }}>
-                        {" "}
-                        {item.price}{" "}
+                      <Text  style={{ color: "#3b3d3c",fontWeight:'bold'}}> Qty:</Text> 
+                       <Text>{1}</Text>
                       </Text>
                     </View>
                     <View
                       style={{
                         width: "35%",
                         paddingTop: 20,
-                        justifyContent: "center",
+                        justifyContent: 'flex-start',
                         alignItems: "center",
                         flexDirection: "row",
                         alignSelf: "center",
@@ -260,13 +268,13 @@ export default class MyCart extends React.Component {
                       }}
                     >
                       <TouchableOpacity
-                        style={{ right: 5, top: 0, position: "absolute" }}
+                        style={{ right: 15, bottom: 22, position: "absolute" }}
                       >
                         {/* <Image source={require('../../assets/images/times.png')}
                                                 style={{ height: 15, width: 15, tintColor: '#898b8a' }}
                                                 resizeMode="contain" */}
-                        <Entypo
-                          name={"dots-three-horizontal"}
+                        <Fontisto
+                          name={"trash"}
                           color={"#878787"}
                           size={15}
                         />
@@ -275,44 +283,18 @@ export default class MyCart extends React.Component {
                       <TouchableOpacity
                         style={{
                           borderWidth: 0,
-                          height: 50,
-                          width: "33.33%",
-                          justifyContent: "center"
+                          height: 30,
+                          width: "40.33%",
+                          justifyContent: "center",
+                          alignItems:'center',
+                          backgroundColor:'#25acfd',marginBottom:-30
                         }}
                         onPress={this.subItem}
                       >
-                        <Entypo name={"minus"} color={"#878787"} size={20} />
+                       <Text style={{color:'white'}}>Buy</Text>
                       </TouchableOpacity>
-                      <View
-                        style={{
-                          borderWidth: 0.5,
-                          borderColor: "#adaeb0",
-                          backgroundColor: "white",
-                          height: 28,
-                          width: "25.33%",
-                          borderRadius: 2,
-                          alignItems: "center",
-                          justifyContent: "center",
-                          alignSelf: "center"
-                        }}
-                      >
-                        <Text style={{ fontSize: 13, color: "#3d3d3d" }}>
-                          {" "}
-                          {this.state.quantity}{" "}
-                        </Text>
-                      </View>
-                      <TouchableOpacity
-                        style={{
-                          borderWidth: 0,
-                          height: 50,
-                          width: "33.33%",
-                          justifyContent: "center",
-                          paddingLeft: 7
-                        }}
-                        onPress={this.addItem}
-                      >
-                        <Entypo name={"plus"} color={"#878787"} size={20} />
-                      </TouchableOpacity>
+                     
+                  
                       {/*                                                      
                                                            
                                                             <View style={{height:30,width:30,backgroundColor:'white'}}>
@@ -326,7 +308,7 @@ export default class MyCart extends React.Component {
             </View>
           </Content>
         </Container>
-        <View
+        {/* <View
           style={{
             // padding: 10,
             // top: -100,
@@ -352,8 +334,8 @@ export default class MyCart extends React.Component {
           >
             {" "}
             Order Summery{" "}
-          </Text>
-          <Row>
+          </Text> */}
+          {/* <Row>
             <Col style={{ alignItems: "center" }}>
               <Text
                 style={{
@@ -426,7 +408,7 @@ export default class MyCart extends React.Component {
                 $500{" "}
               </Text>
             </Col>
-          </Row>
+          </Row> */}
 
           <TouchableOpacity
             onPress={() => this.props.navigation.navigate("Checkout")}
@@ -437,14 +419,14 @@ export default class MyCart extends React.Component {
               backgroundColor: "#49ccc4",
               justifyContent: "center",
               alignItems: "center",
-              borderRadius: 5
+              borderRadius: 5,
             }}
           >
             <Text style={{ color: "white", fontSize: 15, fontWeight: "500" }}>
               CHECKOUT
             </Text>
           </TouchableOpacity>
-        </View>
+        {/* </View> */}
 
         {/* <View
           style={{ position: "absolute", bottom: 0, flex: 1, width: "100%" }}
