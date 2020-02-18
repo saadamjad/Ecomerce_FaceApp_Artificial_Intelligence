@@ -27,17 +27,53 @@ export default class AllProduct extends React.Component {
       shoes: [],
       Jewellary: [],
       Images: [
-        { image: require("../../assets/images/product.png") },
+        {
+          name: "hyadralic Acid",
 
-        { image: require("../../assets/images/product.png") },
+          price: "900",
+          description: "hyderating",
+          image: require("../../assets/images/m1.png")
+        },
 
-        { image: require("../../assets/images/product.png") },
+        {
+          image: require("../../assets/images/m2.png"),
+          name: "Rosmeary ",
 
-        { image: require("../../assets/images/product.png") },
+          price: "960",
+          description: "oil ragulator"
+        },
 
-        { image: require("../../assets/images/product.png") },
+        {
+          image: require("../../assets/images/m3.png"),
+          name: "Green Tea",
 
-        { image: require("../../assets/images/product.png") }
+          price: "100",
+          description: "Acne"
+        },
+
+        {
+          image: require("../../assets/images/m4.png"),
+          name: "Collagen",
+
+          price: "600",
+          description: "firm"
+        },
+
+        {
+          image: require("../../assets/images/m5.png"),
+          name: "Kazdu Root",
+
+          price: "700",
+          description: "sensitive"
+        },
+
+        {
+          image: require("../../assets/images/m1.png"),
+          name: "hyadralic Acid",
+
+          price: "900",
+          description: "hyderating"
+        }
       ]
     };
   }
@@ -89,7 +125,7 @@ export default class AllProduct extends React.Component {
                 >
                   <View style={{ height: 250, borderWidth: 0 }}>
                     <Image
-                      source={require("./../../assets/images/docter2.jpg")}
+                      source={data.image}
                       style={{ height: "100%", width: "100%" }}
                       resizeMode="cover"
                     />
@@ -104,7 +140,7 @@ export default class AllProduct extends React.Component {
                           fontSize: 15
                         }}
                       >
-                        Woonder Skin Care
+                        {data.name}
                       </Text>
                       <Text
                         style={{
@@ -113,7 +149,7 @@ export default class AllProduct extends React.Component {
                           fontSize: 16
                         }}
                       >
-                        Profuct Info in 1 line
+                        {data.description}
                       </Text>
                     </View>
                     <View style={{ flexDirection: "row" }}>
@@ -138,7 +174,7 @@ export default class AllProduct extends React.Component {
                               color: "#25acfd"
                             }}
                           >
-                            170${" "}
+                            {data.price} ${" "}
                           </Text>
                           <Text
                             style={{

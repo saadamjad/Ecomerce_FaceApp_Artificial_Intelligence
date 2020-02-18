@@ -300,6 +300,15 @@ class Login extends Component {
                 marginLeft: 10
               }}
             />
+            <Image
+              source={require("../../assets/images/instagram.png")}
+              style={{
+                height: 30,
+                width: 30,
+                alignSelf: "center",
+                marginLeft: 10
+              }}
+            />
           </View>
         </View>
         <Text>I'm AwesomeAlert</Text>
