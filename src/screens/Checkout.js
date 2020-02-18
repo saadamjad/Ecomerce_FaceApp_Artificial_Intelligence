@@ -61,84 +61,6 @@ export default class Checkout extends React.Component {
           contentContainerStyle={{ flexGrow: 1, paddingBottom: 10 }}
           showsVerticalScrollIndicator={false}
         >
-          <Header
-            style={{
-              marginBottom: 10,
-              borderBottomColor: "black",
-              borderBottomWidth: 1,
-              backgroundColor: "white",
-              height: 50,
-              elevation: this.props.elevation,
-              justifyContent: "center",
-              paddingBottom: 15
-            }}
-          >
-            <Left style={{ flex: 1 }}>
-              <TouchableOpacity
-                // onPress={() => this.props.navigation.openDrawer()}
-                style={{
-                  top: -10,
-                  width: "20%",
-                  height: "100%",
-                  justifyContent: "center"
-                }}
-              >
-                <View
-                  style={{
-                    width: 40,
-                    height: 40,
-                    alignItems: "center",
-                    justifyContent: "center"
-                  }}
-                >
-                  {/* <Feather name={"align-justify"} size={25} color={'black'} /> */}
-                  <Image
-                    style={{ width: 30, height: 30, top: 4, marginLeft: 2 }}
-                    source={require("../../assets/images/icondraw.png")}
-                  />
-                </View>
-              </TouchableOpacity>
-            </Left>
-
-            <Body
-              style={{
-                flex: 1,
-                alignItems: "center"
-              }}
-            >
-              <Text
-                style={{ color: "black", fontSize: 18, top: -6, height: 20 }}
-              >
-                CHECKOUTt
-              </Text>
-            </Body>
-            <Right style={{ flex: 1, justifyContent: "center" }}>
-              <TouchableWithoutFeedback
-                style={{ justifyContent: "flex-start" }}
-              >
-                {/* <Entypo name={'menu'} color={this.props.color} size={25} style={{margin: 15}} /> */}
-                <Image
-                  style={[
-                    { width: 55, height: 55, top: -7, marginLeft: 0, left: 8 }
-                  ]}
-                  source={require("../../assets/images/heartico.png")}
-                />
-              </TouchableWithoutFeedback>
-              <TouchableWithoutFeedback
-                onPress={() => this.props.navigation.navigate("MyCart")}
-                style={{ justifyContent: "flex-start" }}
-              >
-                {/* <Entypo name={'menu'} color={this.props.color} size={25} style={{margin: 15}} /> */}
-                <Image
-                  style={[
-                    { width: 50, height: 50, top: -10, marginLeft: 0, left: 7 }
-                  ]}
-                  source={require("../../assets/images/cartico.png")}
-                />
-              </TouchableWithoutFeedback>
-            </Right>
-          </Header>
-
           {/* <GlobalHeader
             arrow={true}
             // // RedDrawerIcon={true}
@@ -365,7 +287,7 @@ export default class Checkout extends React.Component {
               marginHorizontal: "5%",
               height: 45,
               width: "90%",
-              backgroundColor: "#49ccc4",
+              backgroundColor: "#25acfd",
               justifyContent: "center",
               alignItems: "center",
               borderRadius: 5

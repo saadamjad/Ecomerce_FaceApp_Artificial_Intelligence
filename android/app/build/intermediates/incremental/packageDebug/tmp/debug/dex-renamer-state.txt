@@ -1,4 +1,0 @@
-#Tue Feb 11 14:50:11 PKT 2020
-base.0=/Users/macbook/Desktop/Ecomerce_FaceApp_Artificial_Intelligence/android/app/build/intermediates/transforms/dexMerger/debug/0
-path.0=classes.dex
-renamed.0=classes.dex

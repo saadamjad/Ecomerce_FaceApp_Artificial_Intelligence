@@ -36,6 +36,7 @@ import Entypo from "react-native-vector-icons/Entypo";
 import Fontisto from "react-native-vector-icons/Fontisto";
 import EvilIcons from "react-native-vector-icons/EvilIcons";
 import Feather from "react-native-vector-icons/Feather";
+import GlobalHeader from "../components/GlobalHeader";
 
 // import Feather from 'react-native-vector-icons/Feather'
 import { ScrollView } from "react-native-gesture-handler";
@@ -60,12 +61,12 @@ export default class Seller extends Component {
     };
   }
 
-  addShop() {
+  addShop = () => {
     alert("wait for the admin approval");
     {
       this.props.navigation.navigate("Allshops");
     }
-  }
+  };
 
   render() {
     return (
@@ -75,42 +76,16 @@ export default class Seller extends Component {
       >
         <Container contentContainerStyle={{ paddingBottom: 0 }}>
           <Content>
-            <Header
-              style={{
-                backgroundColor: "white",
-                elevation: 0,
-                height: 40,
-                paddingTop: 8
-              }}
-            >
-              <Left style={{ flex: 1 }}>
-                <TouchableOpacity
-                  onPress={() => this.props.navigation.goBack()}
-                  style={{
-                    top: -10,
-                    width: "20%",
-                    height: "100%",
-                    justifyContent: "center"
-                  }}
-                >
-                  <View
-                    style={{
-                      width: 40,
-                      height: 40,
-                      alignItems: "center",
-                      justifyContent: "center"
-                    }}
-                  >
-                    {/* <Feather name={"align-justify"} size={25} color={'black'} /> */}
-                    <Image
-                      style={{ width: 30, height: 30, top: 4, marginLeft: 2 }}
-                      source={require("../../assets/images/back.png")}
-                    />
-                  </View>
-                </TouchableOpacity>
-              </Left>
-            </Header>
-
+            <GlobalHeader
+              arrow={true}
+              // RedDrawerIcon={true}
+              // twoWords
+              // BlueDrawerIcon={true}
+              backgroundColor="white"
+              // RightCart={true}
+              // headingText="Home"
+              navigation={this.props.navigation}
+            />
             <View
               style={{
                 width: "100%",
@@ -298,7 +273,7 @@ export default class Seller extends Component {
                   alignSelf: "center",
                   alignItems: "center"
                 }}
-                backgroundColor={"#49ccc4"}
+                backgroundColor={"#25acfd"}
               >
                 {this.state.isloading == true ? (
                   <Spinner color={"white"} />

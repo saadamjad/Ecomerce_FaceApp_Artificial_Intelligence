@@ -230,7 +230,7 @@ export default class Login extends Component {
                 flexDirection: "row",
                 marginVertical: 10
               }}
-              onPress={() => this.props.navigation.navigate("Allproducts")}
+              onPress={() => this.props.navigation.navigate("Drawer")}
             >
               <Fontisto name={"date"} color={"white"} size={15} />
               <Text

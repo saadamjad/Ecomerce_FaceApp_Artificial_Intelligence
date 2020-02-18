@@ -13,11 +13,19 @@ import Allproducts from "./Allproducts";
 import Allshops from "./Allshops";
 import Joinasseller from "./JoinasSeller";
 import Myaccount from "./Myaccount";
+import Drawer from "./Drawer";
+import splash from "./Splashscreen";
 
 const AppNavigator = createStackNavigator(
   {
     Home: {
       screen: Home,
+      navigationOptions: () => ({
+        header: null
+      })
+    },
+    Drawer: {
+      screen: Drawer,
       navigationOptions: () => ({
         header: null
       })
@@ -81,10 +89,16 @@ const AppNavigator = createStackNavigator(
       navigationOptions: () => ({
         header: null
       })
+    },
+    splash: {
+      screen: splash,
+      navigationOptions: () => ({
+        header: null
+      })
     }
   },
   {
-    initialRouteName: "Signup"
+    initialRouteName: "splash"
   }
 );
 

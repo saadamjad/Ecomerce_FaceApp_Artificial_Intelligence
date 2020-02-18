@@ -13,7 +13,7 @@ import {
 } from "react-native";
 import { Header, Body, Left, Right } from "native-base";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
-
+import GlobalHeader from "../components/GlobalHeader";
 import firebase from "react-native-firebase";
 export default class Shops extends React.Component {
   constructor(props) {
@@ -23,155 +23,87 @@ export default class Shops extends React.Component {
       shoes: [],
       Jewellary: []
     };
-    this.props.navigation.addListener("willFocus", this.componentWillFocus);
+    // this.props.navigation.addListener("willFocus", this.componentWillFocus);
   }
-  componentWillFocus = async () => {
-    this.gettingClothes();
-    this.gettingShoes();
-    this.gettingJewellary();
-  };
-  componentDidMount() {
-    this.gettingClothes();
-    this.gettingShoes();
-    this.gettingJewellary();
-  }
-  async gettingClothes() {
-    let data = [];
-    const inventory = await firebase
-      .firestore()
-      .collection("ShopAdmin")
-      .get();
-    inventory.docs.map((doc, index) => {
-      console.log("inventory data", doc);
-      // console.log(doc._data.businessName +' '+doc._data.typeOfBusiness+' '+doc._data.permission )
-      if (doc._data.catagory == "Clothes") {
-        console.log(doc._data.shopName);
-        data.push(doc);
-      }
-    });
-    console.log();
-    this.setState({
-      clothes: data
-    });
-    console.log("osama", this.state.clothes);
-  }
-  async gettingShoes() {
-    console.log("========================================================");
-    let data = [];
-    const inventory = await firebase
-      .firestore()
-      .collection("ShopAdmin")
-      .get();
-    inventory.docs.map((doc, index) => {
-      if (doc._data.catagory == "Shoes") {
-        data.push(doc);
-      }
-    });
-    this.setState({
-      shoes: data
-    });
-    console.log("osama shoes", this.state.shoes);
-  }
-  async gettingJewellary() {
-    console.log("========================================================");
-    let data = [];
-    const inventory = await firebase
-      .firestore()
-      .collection("ShopAdmin")
-      .get();
-    inventory.docs.map((doc, index) => {
-      if (doc._data.catagory == "Jewellary and accessories") {
-        data.push(doc);
-      }
-    });
-    console.log(data);
-    this.setState({
-      Jewellary: data
-    });
-  }
+  // componentWillFocus = async () => {
+  //   this.gettingClothes();
+  //   this.gettingShoes();
+  //   this.gettingJewellary();
+  // };
+  // componentDidMount() {
+  //   this.gettingClothes();
+  //   this.gettingShoes();
+  //   this.gettingJewellary();
+  // }
+  // async gettingClothes() {
+  //   let data = [];
+  //   const inventory = await firebase
+  //     .firestore()
+  //     .collection("ShopAdmin")
+  //     .get();
+  //   inventory.docs.map((doc, index) => {
+  //     console.log("inventory data", doc);
+  //     // console.log(doc._data.businessName +' '+doc._data.typeOfBusiness+' '+doc._data.permission )
+  //     if (doc._data.catagory == "Clothes") {
+  //       console.log(doc._data.shopName);
+  //       data.push(doc);
+  //     }
+  //   });
+  //   console.log();
+  //   this.setState({
+  //     clothes: data
+  //   });
+  //   console.log("osama", this.state.clothes);
+  // }
+  // async gettingShoes() {
+  //   console.log("========================================================");
+  //   let data = [];
+  //   const inventory = await firebase
+  //     .firestore()
+  //     .collection("ShopAdmin")
+  //     .get();
+  //   inventory.docs.map((doc, index) => {
+  //     if (doc._data.catagory == "Shoes") {
+  //       data.push(doc);
+  //     }
+  //   });
+  //   this.setState({
+  //     shoes: data
+  //   });
+  //   console.log("osama shoes", this.state.shoes);
+  // }
+  // async gettingJewellary() {
+  //   console.log("========================================================");
+  //   let data = [];
+  //   const inventory = await firebase
+  //     .firestore()
+  //     .collection("ShopAdmin")
+  //     .get();
+  //   inventory.docs.map((doc, index) => {
+  //     if (doc._data.catagory == "Jewellary and accessories") {
+  //       data.push(doc);
+  //     }
+  //   });
+  //   console.log(data);
+  //   this.setState({
+  //     Jewellary: data
+  //   });
+  // }
 
   render() {
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: "#ffff" }}>
         <ScrollView>
-          <Header
-            style={{
-              marginBottom: 10,
-              backgroundColor: "white",
-              height: 50,
-              borderBottomColor: "black",
-              borderBottomWidth: 1,
-              elevation: this.props.elevation,
-              justifyContent: "center",
-              paddingBottom: 15
-            }}
-          >
-            <Left style={{ flex: 1 }}>
-              <TouchableOpacity
-                //    onPress={() => this.props.navigation.openDrawer()}
-                style={{
-                  top: -10,
-                  width: "20%",
-                  height: "100%",
-                  justifyContent: "center"
-                }}
-              >
-                <View
-                  style={{
-                    width: 40,
-                    height: 40,
-                    alignItems: "center",
-                    justifyContent: "center"
-                  }}
-                >
-                  {/* <Feather name={"align-justify"} size={25} color={'black'} /> */}
-                  <Image
-                    style={{ width: 30, height: 30, top: 4, marginLeft: 2 }}
-                    source={require("../../assets/images/icondraw.png")}
-                  />
-                </View>
-              </TouchableOpacity>
-            </Left>
-
-            <Body
-              style={{
-                flex: 1,
-                alignItems: "center"
-              }}
-            >
-              <Text style={{ color: "black", fontSize: 20, height: 20 }}>
-                {" "}
-                SHOPS
-              </Text>
-            </Body>
-            <Right style={{ flex: 1, justifyContent: "center" }}>
-              <TouchableWithoutFeedback
-                //   onPress={() => this.props.navigation.openDrawer()}
-                style={{ justifyContent: "flex-start" }}
-              >
-                {/* <Entypo name={'menu'} color={this.props.color} size={25} style={{margin: 15}} /> */}
-                <Image
-                  style={[
-                    { width: 55, height: 55, top: -7, marginLeft: 0, left: 8 }
-                  ]}
-                  source={require("../../assets/images/heartico.png")}
-                />
-              </TouchableWithoutFeedback>
-              <TouchableWithoutFeedback
-                onPress={() => this.props.navigation.navigate("MyCart")}
-                style={{ justifyContent: "flex-start" }}
-              >
-                {/* <Entypo name={'menu'} color={this.props.color} size={25} style={{margin: 15}} /> */}
-                <Image
-                  style={[
-                    { width: 50, height: 50, top: -10, marginLeft: 0, left: 7 }
-                  ]}
-                  source={require("../../assets/images/cartico.png")}
-                />
-              </TouchableWithoutFeedback>
-            </Right>
-          </Header>
-
+          <GlobalHeader
+            arrow={true}
+            // RedDrawerIcon={true}
+            // twoWords
+            //  DrawerIcon={true}
+            // backgroundColor="white"
+            // RightCart={true}
+            headingText="Shops"
+            navigation={this.props.navigation}
+          />
           <View
             style={{
               flexDirection: "row",

@@ -10,7 +10,9 @@ import {
   KeyboardAvoidingView,
   AsyncStorage,
   Alert,
-  ImageBackground
+  ImageBackground,
+  TextInput,
+  StyleSheet
 } from "react-native";
 
 import { TouchableOpacity } from "react-native";
@@ -18,17 +20,26 @@ import { TouchableOpacity } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { bindActionCreators } from "redux";
 import * as reduxActions from "../redux/actions/action";
+import FontAwesome from "react-native-vector-icons/FontAwesome";
+import GlobalHeader from "../components/GlobalHeader";
+
+import { CheckBox, Overlay } from "react-native-elements";
+import AwesomeAlert from "react-native-awesome-alerts";
 import { connect } from "react-redux";
 class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
       email: "",
-      password: ""
+      password: "",
+      isopen: false,
+      checked1: false,
+      checked: true,
+      showAlert: false
     };
   }
   Login() {
-    this.props.navigation.navigate('Home');
+    this.props.navigation.navigate("Home");
     if (this.state.email == "" || this.state.password == "") {
       alert("please fill ");
     } else {
@@ -43,218 +54,308 @@ class Login extends Component {
   componentDidMount() {
     // this.props.reduxActions.Login();
   }
+
+  showAlert = () => {
+    this.setState({
+      showAlert: true
+    });
+  };
+
+  hideAlert = () => {
+    this.setState({
+      showAlert: false
+    });
+  };
+
   render() {
     return (
-      <KeyboardAvoidingView>
-        <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+      <ScrollView
+        contentContainerStyle={{ flexGrow: 1, backgroundColor: "white" }}
+      >
+        <GlobalHeader
+          // arrow={true}
+          // // RedDrawerIcon={true}
+          // // twoWords
+          // BlueDrawerIcon={true}
+          backgroundColor="white"
+          // RightCart={true}
+          // headingText="add to cart"
+          navigation={this.props.navigation}
+        />
+        <View
+          style={{
+            width: "100%",
+            height: 100,
+            borderWidth: 0,
+            alignItems: "center",
+            justifyContent: "center",
+
+            flex: 1
+          }}
+        >
+          <Text style={{ fontSize: 20 }}> Login </Text>
+        </View>
+
+        {/* </View> */}
+        <View
+          style={{
+            // justifyContent:'center',
+
+            alignSelf: "center",
+            height: "100%",
+
+            width: "95%",
+            backgroundColor: "white"
+          }}
+        >
           <View
             style={{
+              width: "90%",
+              flexDirection: "row",
+              marginVertical: 6,
+
+              alignSelf: "center",
+              borderRadius: 20,
+              backgroundColor: "#ffffff",
+              alignItems: "center",
+              height: 38,
+              shadowColor: "#f1f1f1",
+              shadowOffset: {
+                width: 0,
+                height: 4
+              },
+              shadowOpacity: 0.52,
+              shadowRadius: 5,
+
+              elevation: 5
+            }}
+          >
+            <TextInput
+              style={{ width: "100%", borderWidth: 0, paddingLeft: 15 }}
+              placeholder=" Email  "
+            />
+          </View>
+          <View
+            style={{
+              width: "90%",
+              flexDirection: "row",
+
+              alignSelf: "center",
+              borderRadius: 20,
+              backgroundColor: "#ffffff",
+              alignItems: "center",
+              height: 38,
+              shadowColor: "#f1f1f1",
+              shadowOffset: {
+                width: 0,
+                height: 4
+              },
+              shadowOpacity: 0.52,
+              shadowRadius: 5,
+              marginVertical: 6,
+
+              elevation: 5
+            }}
+          >
+            <TextInput
+              style={{ width: "85%", borderWidth: 0, paddingLeft: 15 }}
+              placeholder="password "
+            />
+            <Text
+              style={{
+                width: "15%",
+                fontSize: 15,
+                color: "#39b5ff",
+                textAlign: "center",
+                fontWeight: "bold",
+                textAlignVertical: "center"
+              }}
+            >
+              @
+            </Text>
+          </View>
+          <View
+            style={{
+              flexDirection: "row",
               width: "100%",
-              height: 100,
+              // justifyContent: "center",
+              alignItems: "center",
+              paddingVertical: 12,
               borderWidth: 0,
+              alignSelf: "center"
+            }}
+          >
+            <CheckBox
+              checked={this.state.checked}
+              onPress={() => this.setState({ checked: !this.state.checked })}
+              style={{ backgroundColor: "red" }}
+              containerStyle={{
+                // backgroundColor: "red",
+                margin: 0,
+                padding: 0
+              }}
+            />
+            <Text style={{ fontSize: 15, color: "#8b8b8b" }}>
+              I accept the{" "}
+              <Text style={{ fontSize: 15, color: "#45b8fd" }}>
+                End User License Agreement{" "}
+              </Text>{" "}
+            </Text>
+          </View>
+          <View
+            style={{
+              flexDirection: "row",
+              width: "100%",
+              // justifyContent: "center",
+              alignItems: "center",
+              paddingVertical: 0,
+              borderWidth: 0,
+              alignSelf: "center"
+            }}
+          >
+            <CheckBox
+              checked={this.state.checked1}
+              onPress={() => this.setState({ checked1: !this.state.checked1 })}
+              style={{ backgroundColor: "red" }}
+              containerStyle={{
+                // backgroundColor: "red",
+                margin: 0,
+                padding: 0
+              }}
+            />
+            <Text style={{ fontSize: 15, color: "#8b8b8b" }}>
+              I accept the{" "}
+              <Text style={{ fontSize: 15, color: "#45b8fd" }}>
+                Privacy Policy{" "}
+              </Text>{" "}
+            </Text>
+          </View>
+          <TouchableOpacity
+            style={{
+              marginTop: 30,
+              // paddingVertical: 14,
+              backgroundColor: "#25acfd",
+              borderRadius: 40,
+              width: "80%",
+              height: 50,
+              alignSelf: "center",
               alignItems: "center",
               justifyContent: "center"
             }}
+            // onPress={() => this.Login()}
+            onPress={() => this.props.navigation.navigate("Face")}
           >
-            <Image
-              source={require("../../assets/images/E.png")}
-              style={{ height: 100, width: 100 }}
-              resizeMode="contain"
-            />
-          </View>
+            {/* <Button */}
 
-          {/* </View> */}
-          <View
-            style={{
-              // justifyContent:'center',
-
-              alignSelf: "center",
-
-              width: "90%",
-              flex: 1
-            }}
-          >
             <Text
               style={{
-                color: "#000000",
-                fontSize: 22,
-                textAlign: "center",
-                marginBottom: 15
+                color: "white",
+                fontSize: 18,
+                fontWeight: "bold",
+                alignSelf: "center"
               }}
             >
               Login
             </Text>
 
-            <Item
-              regular
+            {/* </Button> */}
+          </TouchableOpacity>
+          <Text
+            style={{
+              fontSize: 15,
+              color: "#45b8fd",
+              textAlign: "center",
+              paddingVertical: 20
+            }}
+            onPress={() => {
+              this.showAlert();
+            }}
+          >
+            Forgot your password ?
+          </Text>
+          <Text
+            style={{ fontSize: 15, color: "#8b8b8b", textAlign: "center" }}
+            onPress={() => this.props.navigation.navigate("Signup")}
+          >
+            Not yet Register{" "}
+            <Text style={{ fontSize: 15, color: "#45b8fd" }}>Register </Text>
+          </Text>
+          <View
+            style={{
+              flexDirection: "row",
+              alignSelf: "center",
+              paddingVertical: 20
+            }}
+          >
+            <Image
+              source={require("../../assets/images/facebook.png")}
+              style={{ height: 30, width: 30 }}
+            />
+            <Image
+              source={require("../../assets/images/googleplus.png")}
               style={{
+                height: 30,
+                width: 30,
                 alignSelf: "center",
-                marginTop: 10,
-                marginLeft: 20,
-                marginVertical: 10,
-                marginHorizontal: 20,
-                borderRadius: 5
+                marginLeft: 10
               }}
-            >
-              <Input
-                style={{ paddingRight: 20 }}
-                placeholderTextColor={"#ccccc"}
-                onChangeText={text => this.setState({ email: text })}
-                value={this.state.email}
-                placeholder="Email"
-                style={{ fontSize: 14, marginLeft: 5 }}
-              />
-              {/* {'<br>'} */}
-
-              {/* <Fontisto color={'#000000'} size={20} style={{marginRight:10}} active name='email' /> */}
-            </Item>
-            {/**/}
-            <Item
-              regular
-              style={{
-                alignSelf: "center",
-                marginTop: 10,
-                marginLeft: 20,
-                marginVertical: 10,
-                marginHorizontal: 20,
-                borderRadius: 5
-              }}
-            >
-              <Input
-                style={{ paddingRight: 20 }}
-                placeholderTextColor={"#ccccc"}
-                onChangeText={text => this.setState({ password: text })}
-                value={this.state.password}
-                placeholder="Password"
-                style={{ fontSize: 14, marginLeft: 5 }}
-              />
-              {/* {'<br>'} */}
-
-              {/* <Fontisto color={'#000000'} size={20} style={{marginRight:10}} active name='email' /> */}
-            </Item>
-
-            <TouchableOpacity
-              style={{
-                marginTop: 30,
-                paddingVertical: 14,
-                backgroundColor: "#49ccc4",
-                borderRadius: 40,
-                width: "85%",
-                height: 55,
-                alignSelf: "center"
-              }}
-              // onPress={() => this.Login()}
-              onPress={() => this.props.navigation.navigate("Signup")}
-            >
-              {/* <Button */}
-
-              <Text
-                style={{
-                  color: "white",
-                  fontSize: 20,
-                  alignSelf: "center"
-                }}
-              >
-                Login
-              </Text>
-
-              {/* </Button> */}
-            </TouchableOpacity>
-
-            <View
-              style={{
-                flexDirection: "row",
-                alignSelf: "center",
-                paddingVertical: 10
-              }}
-            >
-              <Text
-                style={{
-                  alignSelf: "center",
-                  color: "#555",
-                  //marginTop: -70,
-                  fontSize: 13,
-
-                  paddingBottom: 5
-                }}
-              >
-                ______
-              </Text>
-              <Text
-                style={{
-                  alignSelf: "center",
-                  color: "#555",
-                  //marginTop: -70,
-                  fontSize: 13,
-                  marginHorizontal: 10
-                }}
-              >
-                Or Login Using
-              </Text>
-              <Text
-                style={{
-                  alignSelf: "center",
-                  color: "#555",
-                  //marginTop: -70,
-                  fontSize: 13,
-
-                  paddingBottom: 5
-                }}
-              >
-                ______
-              </Text>
-            </View>
-            <View style={{ flexDirection: "row", alignSelf: "center" }}></View>
-
-            <View style={{ flexDirection: "row", alignSelf: "center" }}>
-              <Image
-                source={require("../../assets/images/facebook.png")}
-                style={{ height: 30, width: 30 }}
-              />
-              <Image
-                source={require("../../assets/images/googleplus.png")}
-                style={{
-                  height: 30,
-                  width: 30,
-                  alignSelf: "center",
-                  marginLeft: 10
-                }}
-              />
-            </View>
-
-            <View
-              style={{ marginVertical: 20, flex: 1, flex: 1, width: "100%" }}
-            >
-              <TouchableOpacity
-                style={{ marginBottom: 10 }}
-                onPress={() => this.props.navigation.navigate("Guest")}
-              >
-                <Text
-                  style={{ alignSelf: "center", color: "#555", fontSize: 13 }}
-                >
-                  Continue as guest?
-                </Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => this.props.navigation.navigate("SignUp")}
-                style={{ flexDirection: "row", alignSelf: "center" }}
-              >
-                <Text style={{ color: "#555", fontSize: 13 }}>
-                  Don't have an account yet?
-                </Text>
-                <Text
-                  style={{ color: "#073761", fontSize: 13, marginLeft: 20 }}
-                >
-                  Create One
-                </Text>
-              </TouchableOpacity>
-            </View>
+            />
           </View>
-        </ScrollView>
-      </KeyboardAvoidingView>
+        </View>
+        <Text>I'm AwesomeAlert</Text>
+        <TouchableOpacity
+          onPress={() => {
+            this.showAlert();
+          }}
+        ></TouchableOpacity>
+
+        <AwesomeAlert
+          show={this.state.showAlert}
+          showProgress={false}
+          title="Sign Out"
+          message="Are you sure "
+          closeOnTouchOutside={true}
+          closeOnHardwareBackPress={false}
+          showCancelButton={true}
+          showConfirmButton={true}
+          confirmButtonStyle={{
+            width: 130,
+            height: 50,
+            justifyContent: "center",
+            alignItems: "center",
+            marginTop: 30
+          }}
+          cancelButtonStyle={{
+            width: 130,
+            height: 50,
+            justifyContent: "center",
+            alignItems: "center",
+            marginTop: 30
+          }}
+          cancelText="No"
+          confirmText="Yes"
+          confirmButtonColor="#25acfd"
+          onCancelPressed={() => {
+            this.hideAlert();
+          }}
+          onConfirmPressed={() => {
+            this.hideAlert();
+          }}
+          contentContainerStyle={{
+            height: 160,
+
+            // alignItems: "center",
+            justifyContent: "center"
+            // backgroundColor: "red"
+          }}
+        />
+      </ScrollView>
     );
   }
 }
+
+const styles = StyleSheet.create({});
+
 const mapStateToProps = state => ({
   reduxState: state.reducers
 });

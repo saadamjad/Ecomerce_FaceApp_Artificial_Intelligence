@@ -46,6 +46,7 @@ import Feather from "react-native-vector-icons/Feather";
 // import Feather from 'react-native-vector-icons/Feather'
 import { ScrollView } from "react-native-gesture-handler";
 // import { TouchableOpacity } from 'react-native-gesture-handler';
+import GlobalHeader from "../components/GlobalHeader";
 
 export default class MyAccount extends Component {
   constructor(props) {
@@ -73,177 +74,16 @@ export default class MyAccount extends Component {
         style={{ flex: 1 }}
       >
         <ScrollView>
-          <Modal
-            isVisible={this.state.visibleModal}
-            onBackButtonPress={() => this.setState({ visibleModal: null })}
-            onBackdropPress={() => this.setState({ visibleModal: null })}
-            animationInTiming={1000}
-            animationOutTiming={1000}
-            backdropTransitionInTiming={800}
-            backdropTransitionOutTiming={800}
-            animationIn="zoomInDown"
-            animationOut="zoomOutUp"
-          >
-            <View>
-              <View
-                style={{
-                  // justifyContent:'center',
-                  backgroundColor: "white",
-                  alignSelf: "center",
-                  margin: "5%",
-                  marginBottom: 20,
-                  width: "90%",
-                  padding: 30,
-                  flexDirection: "column",
-                  borderRadius: 3,
-                  shadowColor: "#000",
-                  shadowOffset: {
-                    width: 0,
-                    height: 2
-                  },
-                  position: "relative",
-                  top: -80,
-                  shadowOpacity: 0.23,
-                  shadowRadius: 2.62,
-
-                  elevation: 2,
-                  marginTop: 10,
-                  padding: 5,
-                  // marginRight:5,
-                  paddingVertical: 20,
-                  alignItems: "center",
-                  justifyContent: "center"
-                }}
-              >
-                {/* <Text style={{color:'#000000',fontSize:28}}>CONTINUE AS GUEST</Text> */}
-                <Item
-                  regular
-                  style={{
-                    alignSelf: "center",
-                    marginTop: 10,
-                    marginLeft: 20,
-                    marginVertical: 10,
-                    marginHorizontal: 20,
-                    borderRadius: 5
-                  }}
-                >
-                  <Input
-                    onChangeText={text => this.setState({ username: text })}
-                    value={this.state.username}
-                    placeholder="Name"
-                  />
-                  <EvilIcons
-                    color={"#000000"}
-                    size={25}
-                    style={{ marginRight: 10 }}
-                    active
-                    name="user"
-                  />
-                </Item>
-                <Item
-                  regular
-                  style={{
-                    alignSelf: "center",
-                    marginTop: 10,
-                    marginLeft: 20,
-                    marginVertical: 10,
-                    marginHorizontal: 20,
-                    borderRadius: 5
-                  }}
-                >
-                  <Input
-                    onChangeText={text => this.setState({ email: text })}
-                    value={this.state.email}
-                    placeholder="Email"
-                  />
-                  <Fontisto
-                    color={"#000000"}
-                    size={20}
-                    style={{ marginRight: 10 }}
-                    active
-                    name="email"
-                  />
-                </Item>
-
-                <Item
-                  regular
-                  style={{
-                    alignSelf: "center",
-                    marginTop: 10,
-                    marginLeft: 20,
-                    marginVertical: 10,
-                    marginHorizontal: 20,
-                    borderRadius: 5
-                  }}
-                >
-                  <Input
-                    onChangeText={text => this.setState({ Address: text })}
-                    value={this.state.Address}
-                    placeholder="Address"
-                  />
-
-                  <EvilIcons
-                    color={"#000000"}
-                    size={25}
-                    style={{ marginRight: 10 }}
-                    active
-                    name="location"
-                  />
-                </Item>
-                <Item
-                  regular
-                  style={{
-                    alignSelf: "center",
-                    marginTop: 10,
-                    marginLeft: 20,
-                    marginVertical: 10,
-                    marginHorizontal: 20,
-                    borderRadius: 5
-                  }}
-                >
-                  <Input
-                    onChangeText={text => this.setState({ Phone: text })}
-                    value={this.state.Phone}
-                    placeholder="Phone Number"
-                  />
-                  <Feather
-                    color={"#000000"}
-                    size={20}
-                    style={{ marginRight: 10 }}
-                    active
-                    name="phone"
-                  />
-                </Item>
-
-                <View style={{ paddingHorizontal: 20 }}>
-                  <Button
-                    onPress={() =>
-                      this.setState({ visibleModal: !this.state.visibleModal })
-                    }
-                    full
-                    style={{
-                      marginTop: 10,
-                      backgroundColor: "#000000",
-                      paddingHorizontal: 90,
-                      alignItems: "center"
-                    }}
-                    backgroundColor={"#000000"}
-                  >
-                    <Text
-                      style={{
-                        color: "white",
-                        fontSize: 18,
-                        alignSelf: "center"
-                      }}
-                    >
-                      SAVE
-                    </Text>
-                  </Button>
-                </View>
-              </View>
-            </View>
-          </Modal>
-
+          <GlobalHeader
+            arrow={true}
+            // RedDrawerIcon={true}
+            // twoWords
+            // BlueDrawerIcon={true}
+            backgroundColor="white"
+            // RightCart={true}
+            headingText="Profile"
+            navigation={this.props.navigation}
+          />
           <View
             source={require("../../assets/images/loginback.png")}
             style={{
@@ -251,7 +91,8 @@ export default class MyAccount extends Component {
               alignItems: "center",
               justifyContent: "center",
               height: 300,
-              width: "100%"
+              width: "100%",
+              backgroundColor: "white"
             }}
           >
             <Image
@@ -285,55 +126,7 @@ export default class MyAccount extends Component {
                 borderRadius: 50
                 // backgroundColor: "black"
               }}
-            >
-              <TouchableOpacity
-                onPress={() => this.props.navigation.goBack()}
-                style={{
-                  width: "20%",
-                  height: "100%",
-                  justifyContent: "center"
-                }}
-              >
-                <View
-                  style={{
-                    width: 40,
-                    height: 40,
-                    alignItems: "center",
-                    justifyContent: "center"
-                  }}
-                >
-                  {/* <Feather name={"align-justify"} size={25} color={'black'} /> */}
-                  <Image
-                    style={{ width: 30, height: 30, marginRight: 20 }}
-                    source={require("../../assets/images/back.png")}
-                  />
-                </View>
-              </TouchableOpacity>
-            </View>
-            <View
-              style={{
-                position: "absolute",
-                top: 20,
-                right: 30,
-                height: 50,
-                width: 50,
-                borderRadius: 50
-                //  backgroundColor: "black"
-              }}
-            >
-              <TouchableWithoutFeedback
-                onPress={() =>
-                  this.setState({ visibleModal: !this.state.visibleModal })
-                }
-                style={{ top: -10, justifyContent: "flex-start" }}
-              >
-                {/* <Entypo name={'menu'} color={this.props.color} size={25} style={{margin: 15}} /> */}
-                <Image
-                  style={[{ width: 50, height: 50, marginLeft: 0, left: 7 }]}
-                  source={require("../../assets/images/pencil.png")}
-                />
-              </TouchableWithoutFeedback>
-            </View>
+            ></View>
           </View>
           <View
             style={{
@@ -410,6 +203,7 @@ export default class MyAccount extends Component {
               </Col>
             </Row>
           </View>
+
           <TouchableOpacity
             style={{
               backgroundColor: "white",
@@ -474,7 +268,7 @@ export default class MyAccount extends Component {
               marginHorizontal: "5%",
               height: 45,
               width: "90%",
-              backgroundColor: "#49ccc4",
+              backgroundColor: "#25acfd",
               justifyContent: "center",
               alignItems: "center",
               borderRadius: 5
