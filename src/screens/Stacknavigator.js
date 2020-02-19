@@ -15,11 +15,20 @@ import Joinasseller from "./JoinasSeller";
 import Myaccount from "./Myaccount";
 import Drawer from "./Drawer";
 import splash from "./Splashscreen";
+import FaceHisotry from "./FaceHisotry";
+import ImprovmentHistory from "./ImprovementReport";
+import MyTeam from "./MyTeam";
 
 const AppNavigator = createStackNavigator(
   {
     Home: {
       screen: Home,
+      navigationOptions: () => ({
+        header: null
+      })
+    },
+    MyTeam: {
+      screen: MyTeam,
       navigationOptions: () => ({
         header: null
       })
@@ -92,6 +101,18 @@ const AppNavigator = createStackNavigator(
     },
     splash: {
       screen: splash,
+      navigationOptions: () => ({
+        header: null
+      })
+    },
+    FaceHisotry: {
+      screen: FaceHisotry,
+      navigationOptions: () => ({
+        header: null
+      })
+    },
+    ImprovmentHistory: {
+      screen: ImprovmentHistory,
       navigationOptions: () => ({
         header: null
       })

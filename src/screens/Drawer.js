@@ -21,6 +21,8 @@ import Cart from "./Addtocart";
 import Allshops from "./Allshops";
 import Orderhistory from "./Checkout";
 import { ceil } from "react-native-reanimated";
+import FaceHistory from "./FaceHisotry";
+import MyTeam from "./MyTeam";
 // import BottomTabNavigator from "./JoinasSeller";
 // import More from "./JoinasSeller";
 // import CustomerSupport from "./JoinasSeller";
@@ -44,6 +46,9 @@ export default createDrawerNavigator(
     Join: {
       screen: JoinAsSeller
     },
+    MyTeam: {
+      screen: MyTeam
+    },
 
     Cart: {
       screen: Cart
@@ -57,6 +62,9 @@ export default createDrawerNavigator(
 
     Orderhistory: {
       screen: Orderhistory
+    },
+    FaceHistory: {
+      screen: FaceHistory
     }
   },
 
@@ -253,6 +261,30 @@ class MenuDrawer extends React.Component {
               style={styles.ContentView}
               style={styles.ContentView}
               onPress={() => {
+                this.props.navigation.navigate("FaceHistory");
+              }}
+            >
+              <View style={styles.ContentViewInside1}>
+                <Image
+                  source={require("../../assets/images/acount_blue.png")}
+                  style={{
+                    width: "40%",
+                    height: "40%",
+                    marginLeft: 5
+                  }}
+                  resizeMode="contain"
+                />
+              </View>
+
+              <View style={styles.ContentViewInside2}>
+                <Text style={styles.ContentViewText}>View reports</Text>
+              </View>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={styles.ContentView}
+              style={styles.ContentView}
+              onPress={() => {
                 this.props.navigation.navigate("Orderhistory");
               }}
             >
@@ -270,6 +302,30 @@ class MenuDrawer extends React.Component {
 
               <View style={styles.ContentViewInside2}>
                 <Text style={styles.ContentViewText}>order history</Text>
+              </View>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={styles.ContentView}
+              style={styles.ContentView}
+              onPress={() => {
+                this.props.navigation.navigate("MyTeam");
+              }}
+            >
+              <View style={styles.ContentViewInside1}>
+                <Image
+                  source={require("../../assets/images/acount_blue.png")}
+                  style={{
+                    width: "40%",
+                    height: "40%",
+                    marginLeft: 5
+                  }}
+                  resizeMode="contain"
+                />
+              </View>
+
+              <View style={styles.ContentViewInside2}>
+                <Text style={styles.ContentViewText}> My Team </Text>
               </View>
             </TouchableOpacity>
           </View>
